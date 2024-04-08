@@ -1,0 +1,35 @@
+#top {
+    /* display: flex; */
+    display: inline-flex;
+    flex-direction: row;
+    background-color: white;
+    margin:auto;
+    width: 80%;
+    /* text-align: center; */
+}
+
+#logo {
+    padding-top: 5%;
+    padding-left: 2%;
+}
+
+
+#category {
+    margin: auto;
+    color: black;   
+}
+
+#category:hover {
+    color: chartreuse
+}
+
+#search-field{
+    height: 50%;
+    vertical-align: 80%;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.2s ease-in-out;
+}

@@ -1,0 +1,25 @@
+<div id="top">
+
+  <a [routerLink]="['/']">
+    <img src="https://tengrinews.kz/tengri_new/img/logo.svg" alt="tengrinews" id="logo">
+    <h1></h1>
+  </a>
+
+  <div *ngFor="let articleCategory of articleCategories" id="category">
+      <button (click)="refresh()">
+        <a [routerLink]="[ '/'+ articleCategory.name]" class="nav-link">
+          {{ articleCategory.name }}
+        </a>
+      </button>
+
+      <!-- <a [routerLink]="['/albums']" class="nav-link">Albums</a> -->
+  </div>
+  <form onsubmit="formSubmitted()">
+    <input type="text" placeholder="Поиск.." id="search-field">
+    <label for="search"></label>
+    <button type="submit">
+      <img src="https://tengrinews.kz/tengri_new/img/menu-search.svg" alt="">
+    </button>
+  </form>
+</div>
+

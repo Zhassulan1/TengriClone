@@ -1,0 +1,47 @@
+<br>
+
+<div class="main-section">
+
+  <div *ngFor="let article of articleList" class="article-block">
+
+    <div class="articleImg">
+
+      <img [src]="article.img" />
+      
+    </div>
+  
+  
+    <div class="article-detail">
+      
+      <h3>
+        <a [title]="article.name" [routerLink]="[article.src]">
+          {{ article.name }}
+        </a>
+      </h3>
+
+      <p>{{ article.description }}</p>
+    
+      <span>
+        {{ article.date }}
+      </span>
+
+      <span>
+        <img src="https://tengrinews.kz/tengri_new/img/viewings.svg" alt="viewed"> 
+      </span>
+
+      <span>
+        {{article.views}}
+      </span>
+    
+      <span>
+        <img src="https://tengrinews.kz/tengri_new/img/comments.svg" alt="commented">
+      </span> 
+    
+      <span>{{article.comments}}</span>
+    
+    </div>
+
+</div>
+
+
+</div>
