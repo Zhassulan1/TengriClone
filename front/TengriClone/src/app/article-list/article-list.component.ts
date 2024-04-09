@@ -68,17 +68,17 @@ export class ArticleListComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: RouterModule, private articleListService: ArticleListService) { }
 
   ngOnInit() {
-    this.getArticleslist();
     // this.newArticle = {
-    //   userId: 1,
-    //   id: 101,
-    //   title: ''
-    // }  
-    
-    const routeParams = this.route.snapshot.paramMap;
-    this.categoryFromRoute = String(routeParams.get('categoryName')).toLowerCase();
-    
-    return this.articleList
+      //   userId: 1,
+      //   id: 101,
+      //   title: ''
+      // }  
+      
+      const routeParams = this.route.snapshot.paramMap;
+      this.categoryFromRoute = String(routeParams.get('categoryName')).toLowerCase();
+      console.log(this.categoryFromRoute)
+      this.getArticleslist();
+      return this.articleList
     // this.articleList = articles.filter(article => {
     //   const match = article.category.toLowerCase() === this.categoryFromRoute;
     //   return match;

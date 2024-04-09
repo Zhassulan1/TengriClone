@@ -13,7 +13,7 @@ class ArticleSerializer(serializers.Serializer):
     instance = Article()
     def create(self, validated_data):
         
-        return Article.objects.create(**validated_data)
+        # return Article.objects.create(**validated_data)
     
         instance = Article(
             articleURL = validated_data.get('articleURL'),

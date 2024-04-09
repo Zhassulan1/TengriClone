@@ -1,5 +1,3 @@
-import requests
-import fake_useragent 
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
