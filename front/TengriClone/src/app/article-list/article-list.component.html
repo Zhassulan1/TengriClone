@@ -6,7 +6,7 @@
 
     <div class="articleImg">
 
-      <img [src]="article.img" />
+      <img [src]="article.imgURL" />
       
     </div>
   
@@ -14,15 +14,15 @@
     <div class="article-detail">
       
       <h3>
-        <a [title]="article.name" [routerLink]="[article.src]">
-          {{ article.name }}
+        <a [title]="article.title" [routerLink]="[article.articleURL]">
+          {{ article.title }}
         </a>
       </h3>
 
-      <p>{{ article.description }}</p>
+      <p>{{ article.announce }}</p>
     
       <span>
-        {{ article.date }}
+        {{ article.pub_date }}
       </span>
 
       <span>
@@ -30,7 +30,7 @@
       </span>
 
       <span>
-        {{article.views}}
+        {{article.viewings}}
       </span>
     
       <span>

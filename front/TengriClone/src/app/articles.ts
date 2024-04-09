@@ -1,16 +1,3 @@
-export interface Article {
-  id: number;
-  name: string;
-  description: string;
-  img: string;
-  date: string;
-  views: number;
-  comments: number;
-  category: string;
-  src: string;
-}
-
-
 export const articles = [
     {
     id: 1,

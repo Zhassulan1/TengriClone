@@ -5,10 +5,10 @@
     <h1></h1>
   </a>
 
-  <div *ngFor="let articleCategory of articleCategories" id="category">
-      <button (click)="refresh()">
-        <a [routerLink]="[ '/'+ articleCategory.name]" class="nav-link">
-          {{ articleCategory.name }}
+  <div *ngFor="let category of categories" id="category">
+      <button (click)="refresh(category)" class="nav-link">
+        <a [routerLink]="[ '/'+ category.name]" class="nav-link">
+          {{ category.name }}
         </a>
       </button>
 
@@ -17,7 +17,7 @@
   <form onsubmit="formSubmitted()">
     <input type="text" placeholder="Поиск.." id="search-field">
     <label for="search"></label>
-    <button type="submit">
+    <button type="submit" >
       <img src="https://tengrinews.kz/tengri_new/img/menu-search.svg" alt="">
     </button>
   </form>

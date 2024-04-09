@@ -3,7 +3,7 @@ import { Categories } from '../Categories';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { CurrentCategory } from '../Categories';
 
 @Component({
   selector: 'app-top-bar',
@@ -13,10 +13,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent {
-  articleCategories = [...Categories];
+  categories = [...Categories];
   
-  refresh(): void {
+  refresh(category: any): void {
     window.location.reload();
+    CurrentCategory.current = category;
+  }
+
+  setCategory(category: string) {
+    // CurrentCategory.Set(category);
   }
   
   formSubmitted() {

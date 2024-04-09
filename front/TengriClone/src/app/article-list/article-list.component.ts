@@ -1,8 +1,8 @@
 // import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
-
-import { Article, articles } from '../articles';
+import { Article } from '../models';
+// import { articles } from '../articles';
 
 // @Component({
 //   selector: 'app-product-list',
@@ -48,7 +48,9 @@ import { Article, articles } from '../articles';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { Categories } from '../Categories';
+import { ArticleListService } from '../article-list.service';
+
+const ItemsPerPage = 20;
 
 @Component({
   selector: 'app-article-list',
@@ -58,23 +60,39 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './article-list.component.css'
 })
 export class ArticleListComponent implements OnInit {
-  // articleList = [...articles];
   articleList!: Article[];
   categoryFromRoute!: string;
+  isLoaded = false;
+  // newArticle!: Article;
 
-  constructor(private route: ActivatedRoute, private router: RouterModule) { }
+  constructor(private route: ActivatedRoute, private router: RouterModule, private articleListService: ArticleListService) { }
 
   ngOnInit() {
+    this.getArticleslist();
+    // this.newArticle = {
+    //   userId: 1,
+    //   id: 101,
+    //   title: ''
+    // }  
+    
     const routeParams = this.route.snapshot.paramMap;
     this.categoryFromRoute = String(routeParams.get('categoryName')).toLowerCase();
+    
+    return this.articleList
+    // this.articleList = articles.filter(article => {
+    //   const match = article.category.toLowerCase() === this.categoryFromRoute;
+    //   return match;
+    // });
+  }
 
-    this.articleList = articles.filter(article => {
-      const match = article.category.toLowerCase() === this.categoryFromRoute;
-      if (!match) {
-        console.log('Mismatching article:', article);
-      }
-      return match;
+  getArticleslist(){
+    this.isLoaded = false;
+    this.articleListService.getArticleslist(this.categoryFromRoute, 1, 20).subscribe((articles) => { 
+      console.log(this.categoryFromRoute)
+      console.log(articles);
+      this.articleList = articles;
+      this.isLoaded = true
+      console.log(articles);
     });
   }
 }
-// 
