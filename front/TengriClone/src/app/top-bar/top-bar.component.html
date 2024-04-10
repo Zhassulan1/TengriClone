@@ -11,11 +11,21 @@
           {{ category.name }}
         </a>
       </button>
-
-      <!-- <a [routerLink]="['/albums']" class="nav-link">Albums</a> -->
   </div>
-  <form onsubmit="formSubmitted()">
-    <input type="text" placeholder="Поиск.." id="search-field">
+
+
+
+  <form
+    [formGroup]="searchForm"
+    class="searchBar"
+    (ngSubmit)="onSearchSubmit()"
+  >
+    <input
+      type="text"
+      placeholder="Поиск.."
+      formControlName="searchValue"
+      id="search-field"
+    />
     <label for="search"></label>
     <button type="submit" >
       <img src="https://tengrinews.kz/tengri_new/img/menu-search.svg" alt="">

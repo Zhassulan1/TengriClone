@@ -2,7 +2,9 @@ from django.db import models
 
 # Create your views here.
 class Article(models.Model):
+    category = models.CharField(max_length=50)
     articleURL = models.CharField(max_length=200)
+    TengriID = models.IntegerField(primary_key=True)
     imgURL = models.CharField(max_length=200)
     title = models.CharField(max_length=500)
     announce = models.CharField(max_length=500)
@@ -13,7 +15,9 @@ class Article(models.Model):
 
     def to_json(self):
         return {
+            'category': self.category,
             'articleURL': self.articleURL,
+            'TengriID': self.TengriID,
             'imgURL': self.imgURL,
             'title': self.title,
             'announce': self.announce,
@@ -26,3 +30,5 @@ class Article(models.Model):
         verbose_name = 'Article'
         verbose_name_plural = 'Articles'
     
+class DateKeeper(models.Model):
+    last_update = models.DateTimeField(auto_now=True)

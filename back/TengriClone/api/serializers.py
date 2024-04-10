@@ -3,6 +3,7 @@ from rest_framework import serializers
 from api.models import Article
 
 class ArticleSerializer(serializers.Serializer):
+    category = serializers.CharField(max_length=50)
     articleURL = serializers.CharField(max_length=200)
     imgURL = serializers.CharField(max_length=200)
     title = serializers.CharField(max_length=500)
@@ -10,12 +11,11 @@ class ArticleSerializer(serializers.Serializer):
     pub_date = serializers.CharField(max_length=20)
     viewings = serializers.CharField(max_length=10)
     comments = serializers.CharField(max_length=10)
-    instance = Article()
-    def create(self, validated_data):
-        
+
+    def create(self, validated_data):        
         # return Article.objects.create(**validated_data)
-    
         instance = Article(
+            category = validated_data.get('category'),
             articleURL = validated_data.get('articleURL'),
             imgURL = validated_data.get('imgURL'),
             title = validated_data.get('title'),

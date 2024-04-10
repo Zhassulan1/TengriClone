@@ -4,8 +4,8 @@
         <a class="page-link">Previous</a>
       </li> -->
       
-      <li *ngFor="let page of pages; category" class="page-item">
-        <a class="page-link" [routerLink]="'/page/' + page"> {{ page }} </a>
+      <li *ngFor="let page of pages; categoryFromRoute" class="page-item">
+        <a class="page-link" [routerLink] = "[page]" > {{ page }} </a>
       </li>
      
       

@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Categories } from '../Categories';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrentCategory } from '../Categories';
+import { ArticleListService } from '../article-list.service';
+import { Article } from '../models';
 
 @Component({
   selector: 'app-top-bar',
@@ -12,7 +14,7 @@ import { CurrentCategory } from '../Categories';
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.css']
 })
-export class TopBarComponent {
+export class TopBarComponent implements OnInit {
   categories = [...Categories];
   
   refresh(category: any): void {
@@ -20,14 +22,30 @@ export class TopBarComponent {
     CurrentCategory.current = category;
   }
 
-  setCategory(category: string) {
-    // CurrentCategory.Set(category);
+  searchValue = '';
+  articles: Article[] = [];
+  searchForm = this.fb.nonNullable.group({
+    searchValue: '',
+  });
+
+  constructor(
+    private articlesService: ArticleListService,
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit(): void {
+    this.fetchData();
   }
-  
-  formSubmitted() {
-    alert("Form Submitted");
-    const name = document.getElementById("name")?.innerHTML;
-    alert(name);
+
+  fetchData(): void {
+    this.articlesService.searchArticles(this.searchValue).subscribe((articles) => {
+      this.articles = articles;
+    });
+  }
+
+  onSearchSubmit(): void {
+    this.searchValue = this.searchForm.value.searchValue ?? '';
+    this.fetchData();
   }
   
 }
