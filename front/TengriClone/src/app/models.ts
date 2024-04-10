@@ -1,7 +1,7 @@
 export interface Article {
     category: string;
     articleURL: string;
-    TengriID: string;
+    TengriID: number;
     title: string;
     announce: string;
     imgURL: string;

@@ -6,8 +6,8 @@ import { SearchComponent } from './search/search.component';
 export const routes: Routes = [
     { path: '', redirectTo: 'News', pathMatch: 'full' },
     { path: ':categoryName', component: ArticleListComponent },
-    { path: ':TengriID', component: ArticleDetailsComponent },
-    { path: ':categoryName/page/:pageNumber', component: ArticleListComponent },
     { path: 'search/:query', component: SearchComponent },
+    { path: ':categoryName/:TengriID', component: ArticleDetailsComponent },
+    // { path: ':categoryName/page/:pageNumber', component: ArticleListComponent },
     // {path: '**', redirectTo: 'News'},
 ];

@@ -9,7 +9,7 @@
 
     <div class="article-detail">
       <h3>
-        <a [title]="article.title" href="{{ article.articleURL }}">
+        <a [title]="article.title" [routerLink]="[article.TengriID]">
           <!-- [routerLink]="[article.TengriID] -->
           <!-- {{ article }} -->
           {{ article.title }}

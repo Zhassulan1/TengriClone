@@ -36,6 +36,12 @@ export class ArticleListService {
       `http://127.0.0.1:8000/api/search/${searchValue}`
     );
   }
+
+  findArticle(articleIdFromRoute: number): Observable<Article> {
+    return this.client.get<Article>(
+      `http://127.0.0.1:8000/api/article/${articleIdFromRoute}`
+    );
+  }
   //  createAlbum(newAlbum: Article): Observable<Article> {
   //   return this.client.post<Article>(`${this.BASE_URL}/Article`, newAlbum);
   // }

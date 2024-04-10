@@ -10,15 +10,15 @@ def parse_item(content_list_item):
 
     TengriID = 123456
     try: 
-        TengriID = articleURL[-7:-1]
-    except:
-        TengriID = articleURL[-5:-1]
+        TengriID = int(articleURL[-7:-1])
+    except Exception as e:
+        TengriID = int(articleURL[-5:-1])
                     
 
 
     imgURL = content_list_item.find('a').find('picture').find('img', class_='content_main_item_img')['src']
     if imgURL[:5] != 'https':
-        imgURL = 'https://tengrinews.kz' + content_list_item.find('a').find('picture').find('img', class_='content_main_item_img')['data-src']
+        imgURL = 'https://tengrinews.kz' + imgURL
 
     title = content_list_item.find('span', class_='content_main_item_title').text
     announce = content_list_item.find('span', class_='content_main_item_announce')
@@ -50,7 +50,7 @@ def parse_item(content_list_item):
 
 
 def parse_rubric(category, delay=20):
-    url = f"https://tengrinews.kz/{category}/"
+    url = f"https://tengrinews.kz/{category}"
     print('\n\n')
     print(f'Parsing URL "{url}"  ...')
 

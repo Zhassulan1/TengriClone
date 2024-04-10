@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from api.serializers import ArticleSerializer
+from api.serializers import ArticleSerializer, SimpleSerializer
 from django.views.decorators.csrf import csrf_exempt
 from api.parse import parse_rubric
 
@@ -33,9 +33,55 @@ def search(request, query):
             'title': article['title'],
             'announce': article['announce'],
         }
+        article['category'] = 'Search'
         new_list.append(new_dict)
+
+    serializer = ArticleSerializer(data=articles, many=True)
+    if serializer.is_valid():
+        serializer.save()
+        print('Serialized Data is valid')
+    else: 
+        print('Serialization error:', serializer.errors)
        
     return JsonResponse(new_list, safe=False)
+
+
+
+@csrf_exempt
+def find_article(request, TengriID):
+    articles = Article.objects.all()
+    article = {}
+
+    for item in articles:
+        if item.TengriID == TengriID:
+            article = item
+            break
+
+    print('Found article: ', articles)
+    serializer = ArticleSerializer(data=[article], many=False)
+    if serializer.is_valid():
+        serializer.save()
+        print('Serialized Data is valid')
+    else:
+        print('Serialization error:', serializer.errors)
+
+    return JsonResponse(article, safe=False)
+
+
+    # new_article = {
+    #     'articleURL': article.articleURL,
+    #     'TengriID': article.TengriID,
+    #     'category': article.category,
+    #     'imgURL': '',
+    #     'title': '',   
+    #     'announce': '',
+    #     'pub_date': '',
+    #     'viewings': '',
+    #     'comments': '',
+    # }
+
+
+
 
 def prepare_db():
     print('Checking DB')

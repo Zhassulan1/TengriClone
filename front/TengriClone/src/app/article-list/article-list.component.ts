@@ -38,7 +38,7 @@ export class ArticleListComponent implements OnInit {
     this.newArticle = {
         category: '',
         articleURL: '',
-        TengriID: '',
+        TengriID: 0,
         title: '',
         announce: '',
         imgURL: '',
