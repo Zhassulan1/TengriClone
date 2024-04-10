@@ -15,7 +15,7 @@ pip install djangorestframework
 python manage.py runserver
 
 // с другого окна
-cd TengriClone/back/TengriClone
+cd TengriClone/front/TengriClone
 npm install
 npm start
 
