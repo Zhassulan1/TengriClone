@@ -28,17 +28,3 @@ class ArticleSerializer(serializers.Serializer):
 
         instance.save()
         return instance
-    
-class SimpleSerializer(serializers.Serializer):
-    category = serializers.CharField(max_length=50)
-    articleURL = serializers.CharField(max_length=200)
-    TengriID = serializers.IntegerField()
-    
-    def create(self, validated_data):
-        instance = Article(
-            category = validated_data.get('category'),
-            articleURL = validated_data.get('articleURL'),
-            TengriID = validated_data.get('TengriID'),
-        )
-        instance.save()
-        return instance

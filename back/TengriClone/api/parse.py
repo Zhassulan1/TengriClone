@@ -55,11 +55,15 @@ def parse_rubric(category, delay=20):
     print(f'Parsing URL "{url}"  ...')
 
     options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    options.add_argument('window-size=1920x1080')
+    options.add_argument("disable-gpu")
 
     # Set preferences to block images and JavaScript
     prefs = {
         "profile.managed_default_content_settings.images": 2,
     }
+    
     options.add_experimental_option("prefs", prefs)
 
     browser = webdriver.Chrome(options=options)

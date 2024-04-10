@@ -30,5 +30,3 @@ class Article(models.Model):
         verbose_name = 'Article'
         verbose_name_plural = 'Articles'
     
-class DateKeeper(models.Model):
-    last_update = models.DateTimeField(auto_now=True)

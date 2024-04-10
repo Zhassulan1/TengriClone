@@ -1,7 +1,8 @@
 from django.http import JsonResponse
-from api.serializers import ArticleSerializer, SimpleSerializer
+from api.serializers import ArticleSerializer
 from django.views.decorators.csrf import csrf_exempt
 from api.parse import parse_rubric
+import datetime, os
 
 from api.models import Article
 # import json
@@ -68,17 +69,6 @@ def find_article(request, TengriID):
     return JsonResponse(article, safe=False)
 
 
-    # new_article = {
-    #     'articleURL': article.articleURL,
-    #     'TengriID': article.TengriID,
-    #     'category': article.category,
-    #     'imgURL': '',
-    #     'title': '',   
-    #     'announce': '',
-    #     'pub_date': '',
-    #     'viewings': '',
-    #     'comments': '',
-    # }
 
 
 
@@ -103,5 +93,7 @@ def prepare_db():
         else: 
             print('Serialization error:', serializer.errors)
             exit(1)
+
+        
 
     print('DB is ready')
