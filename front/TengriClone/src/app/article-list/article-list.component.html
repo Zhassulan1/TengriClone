@@ -3,50 +3,53 @@
 <div class="main-section">
 
   <div *ngFor="let article of articles" class="article-block">
-    <div class="articleImg">
-      <img [src]="article.imgURL" />
-    </div>
+    <!-- <content *ngIf="article.title != ''"> -->
 
-    <div class="article-detail">
-      <h3>
-        <a [title]="article.title"  href="{{ article.TengriID }}">
-          <!-- [routerLink]="[article.TengriID]" -->
-          <!-- href="{{ article.TengriID }}" -->
-          <!-- {{ article }} -->
-          {{ article.title }}
-        </a>
-      </h3>
-
-      <span>{{ article.announce }}</span>
-
-      <br>
-      <br>
+      <div class="articleImg">
+        <img [src]="article.imgURL" />
+      </div>
       
-      <span>
-        {{ article.pub_date }}
-      </span>
-
-      <span>
-        <img
+      <div class="article-detail">
+        <h3>
+          <a [title]="article.title"  href="{{ article.articleURL }}">
+            <!-- [routerLink]="[article.TengriID]" -->
+            <!-- href="{{ article.TengriID }}" -->
+            <!-- {{ article }} -->
+            {{ article.title }}
+          </a>
+        </h3>
+        
+        <span>{{ article.announce }}</span>
+        
+        <br>
+        <br>
+        
+        <span>
+          {{ article.pub_date }}
+        </span>
+        
+        <span>
+          <img
           src="https://tengrinews.kz/tengri_new/img/viewings.svg"
           alt="viewed"
-        />
-      </span>
-
-      <span>
-        {{ article.viewings }}
-      </span>
-
-      <span>
-        <img
+          />
+        </span>
+        
+        <span>
+          {{ article.viewings }}
+        </span>
+        
+        <span>
+          <img
           src="https://tengrinews.kz/tengri_new/img/comments.svg"
           alt="commented"
-        />
-      </span>
-
-      <span>{{ article.comments }}</span>
-    </div>
-</div>
-
+          />
+        </span>
+        
+        <span>{{ article.comments }}</span>
+      </div>
+    <!-- </content> -->
+    
+  </div>
 
 </div>

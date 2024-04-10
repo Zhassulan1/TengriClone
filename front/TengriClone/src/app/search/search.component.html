@@ -9,10 +9,11 @@
 
     <div class="article-detail">
       <h3>
-        <a [title]="article.title" [routerLink]="[article.TengriID]">
-          <!-- [routerLink]="[article.TengriID] -->
-          <!-- {{ article }} -->
-          {{ article.title }}
+        <a [title]="article.title" href="{{ article.articleURL }}">
+            <!-- href="{{ article.articleURL }}" -->
+            <!-- [routerLink]="[article.TengriID] -->
+            <!-- {{ article }} -->
+            {{ article.title }}
         </a>
       </h3>
 
