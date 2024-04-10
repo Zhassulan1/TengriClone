@@ -9,15 +9,18 @@
 
     <div class="article-detail">
       <h3>
-        <a [title]="article.title" href="{{ article.articleURL }}">
+        <a [title]="article.title" href="{{ article.TengriID }}">
           <!-- [routerLink]="[article.TengriID] -->
           <!-- {{ article }} -->
           {{ article.title }}
         </a>
       </h3>
 
-      <p>{{ article.announce }}</p>
+      <span>{{ article.announce }}</span>
 
+      <br>
+      <br>
+      
       <span>
         {{ article.pub_date }}
       </span>

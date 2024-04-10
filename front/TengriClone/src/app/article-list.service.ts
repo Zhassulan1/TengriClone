@@ -29,8 +29,6 @@ export class ArticleListService {
   getArticleslist(category: string, page: number, pageSize: number): Observable<Article[]> {
     console.log(category)
     return this.client.get<Article[]>(`http://127.0.0.1:8000/api/category/${category}`);
-    
-    ///// ?&page=${page}&pageSize=${pageSize}`);
   }
 
   searchArticles(searchValue: string): Observable<Article[]> {

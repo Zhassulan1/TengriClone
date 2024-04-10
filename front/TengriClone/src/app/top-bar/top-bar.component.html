@@ -19,6 +19,7 @@
     [formGroup]="searchForm"
     class="searchBar"
     (ngSubmit)="onSearchSubmit()"
+    [routerLink]="['search/', searchForm.value.searchValue]"
   >
     <input
       type="text"

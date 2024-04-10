@@ -16,7 +16,10 @@ def parse_item(content_list_item):
                     
 
 
-    imgURL = 'https://tengrinews.kz' + content_list_item.find('a').find('picture').find('img', class_='content_main_item_img')['src']
+    imgURL = content_list_item.find('a').find('picture').find('img', class_='content_main_item_img')['src']
+    if imgURL[:5] != 'https':
+        imgURL = 'https://tengrinews.kz' + content_list_item.find('a').find('picture').find('img', class_='content_main_item_img')['data-src']
+
     title = content_list_item.find('span', class_='content_main_item_title').text
     announce = content_list_item.find('span', class_='content_main_item_announce')
     

@@ -17,7 +17,7 @@ import { Article } from '../models';
 export class TopBarComponent implements OnInit {
   categories = [...Categories];
   
-  refresh(category: any): void {
+  refresh(category: any = 'News'): void {
     window.location.reload();
     CurrentCategory.current = category;
   }
@@ -34,7 +34,7 @@ export class TopBarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fetchData();
+    // this.fetchData();
   }
 
   fetchData(): void {
@@ -46,6 +46,6 @@ export class TopBarComponent implements OnInit {
   onSearchSubmit(): void {
     this.searchValue = this.searchForm.value.searchValue ?? '';
     this.fetchData();
+    this.refresh();
   }
-  
 }
