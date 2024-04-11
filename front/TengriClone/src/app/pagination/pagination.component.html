@@ -1,20 +1,6 @@
-<nav aria-label="...">
-    <ul class="pagination">
-      <!-- <li class="page-item disabled">
-        <a class="page-link">Previous</a>
-      </li> -->
-      
-      <li *ngFor="let page of pages; categoryFromRoute" class="page-item">
-        <a class="page-link" [routerLink] = "[page]" > {{ page }} </a>
-      </li>
-     
-      
-      <!-- <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li> -->
-    
-    
-    </ul>
+<div>
+  <ul class="pagination" [innerHTML]="paginationString"></ul>
+</div>
 
-    
-  </nav>
+
+

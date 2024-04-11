@@ -3,7 +3,7 @@ import { Categories } from '../Categories';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CurrentCategory } from '../Categories';
+// import { CurrentCategory } from '../Categories';
 import { ArticleListService } from '../article-list.service';
 import { Article } from '../models';
 
@@ -17,9 +17,8 @@ import { Article } from '../models';
 export class TopBarComponent implements OnInit {
   categories = [...Categories];
   
-  refresh(category: any = 'News'): void {
+  refresh(): void {
     window.location.reload();
-    CurrentCategory.current = category;
   }
 
   searchValue = '';

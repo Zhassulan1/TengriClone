@@ -6,7 +6,7 @@
   </a>
 
   <div *ngFor="let category of categories" id="category">
-      <button (click)="refresh(category)" class="nav-link">
+      <button (click)="refresh()" class="nav-link">
         <a [routerLink]="[ '/'+ category.name]" class="nav-link">
           {{ category.name }}
         </a>

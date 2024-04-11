@@ -1,4 +1,4 @@
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 
 import { Article } from '../models';
 
@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleListService } from '../article-list.service';
+import { PaginationComponent } from '../pagination/pagination.component';
 
-const ItemsPerPage = 20;
 
 @Component({
   selector: 'app-article-list',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [RouterModule, CommonModule, FormsModule, ReactiveFormsModule, RouterOutlet, PaginationComponent],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.css'
 })
@@ -21,6 +21,7 @@ export class ArticleListComponent implements OnInit {
   articles!: Article[];
   filteredArticleList!: Article[];
   categoryFromRoute!: string;
+  currentPage!: number
   isLoaded = false;
   newArticle!: Article;
 
@@ -33,33 +34,20 @@ export class ArticleListComponent implements OnInit {
   ngOnInit() {
     const routeParams = this.route.snapshot.paramMap;
     this.categoryFromRoute = String(routeParams.get('categoryName')).toLowerCase(); // || 'news';
-
+    this.currentPage = Number(routeParams.get('page'))
     this.getArticles();
-    this.newArticle = {
-        category: '',
-        articleURL: '',
-        TengriID: 0,
-        title: '',
-        announce: '',
-        imgURL: '',
-        pub_date: '',
-        viewings: 0,
-        comments: 0,
-      }  
-      
-      this.articles = this.articles.filter(article => {
-        const match = article.category.toLowerCase() === this.categoryFromRoute;
-        console.log(article);
-        return match;
-      });
-      // return this.articles
   }
 
   getArticles(){
     this.isLoaded = false;
-    this.articleListService.getArticleslist(this.categoryFromRoute, 1, ItemsPerPage).subscribe((article) => {
+    this.articleListService.getArticleslist(this.categoryFromRoute, this.currentPage).subscribe((article) => {
       this.articles = article;
       this.isLoaded = true;
     });
   }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
 }

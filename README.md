@@ -1,6 +1,17 @@
 # Tengri News Clone 
 Проект был написан в рамках 2-этапа отбора в nFactorial Incubator
 
+## Update
+Были внесены некоторые изменения в проект после дедлайна.
+
+[Здесь](https://github.com/Zhassulan1/TengriClone/tree/521e7c71f0cb69a1331c48350e8fd8d5b4c80055) версия проекта которая соответствует дедлайну. Также эту весию можно найти в ветке [stable](https://github.com/Zhassulan1/TengriClone/tree/stable) (последнее обновление README в строке `cd TengriClone/back/TengriClone` должен быть front вместо back)
+
+В последнем коммите все работает как надо пагинация, поиск и теперь данные не загружаются с локальной базы данных, а динамически парсятся с [Tengrinews.kz](https://tengrinews.kz).
+
+Я бы не продолжал доделывать проект, но после того как Я не смог сделать пагинацию, мне самому стало интересно как модно было решить эту проблему и я продолжил искать способы. В итоге получилось.
+
+
+
 ## Как настроить и запустить
 
 ```
@@ -15,7 +26,7 @@ pip install djangorestframework
 python manage.py runserver
 
 // с другого окна
-cd TengriClone/back/TengriClone
+cd TengriClone/front/TengriClone
 npm install
 npm start
 

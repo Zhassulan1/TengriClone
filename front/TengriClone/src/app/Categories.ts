@@ -1,16 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-@Injectable()
-export class CurrentCategory {
-  get_current(): Observable<string> {
-    return new Observable<string>((observer) => {
-      observer.next(CurrentCategory.current);
-    });
-  }
-  static current = 'News'; 
-  
-}
 
 export const Categories = [
   {

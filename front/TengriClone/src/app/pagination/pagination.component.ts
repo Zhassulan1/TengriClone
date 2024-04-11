@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, Input, inject } from '@angular/core';
+import { Component, OnInit, Input, inject, Output } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ArticleListService } from '../article-list.service';
-import { Subscription } from 'rxjs';
-import { CurrentCategory } from '../Categories';
 import { CategoryComponent } from '../category/category.component';
 import { TopBarComponent } from '../top-bar/top-bar.component';
 
@@ -19,37 +17,30 @@ export const ItemsPerPage = 20;
 })
 export class PaginationComponent implements OnInit {
 
-  pages: any[] = [];
-  totalPages = 0;
-  currentPage: string = '';
-  totalItems = this.articleListService.getTotalItems();
-  categoryFromRoute: string = '';
-  
+  @Input() currentPage: any;
+  @Input() currentCategory: any;
+  paginationString: any;
+
   constructor(
     private articleListService: ArticleListService,
     private route: ActivatedRoute, 
     private router: RouterModule
   ) { 
-    if (this.totalItems) {
-      this.totalPages = Math.ceil(this.totalItems / ItemsPerPage);
-      this.pages = Array.from({length: this.totalPages}, (_, i) => i+1);
-    }
   }
   
   
-  ngOnInit(): void {        
-    const routeParams = this.route.snapshot.paramMap;
+  ngOnInit(): void {    
+    this.getPagesCount()
+  }
 
-    this.currentPage = String(routeParams.get('pageNumber')); // || 1;
-    // console.log("category in pagination: " + this.categoryFromRoute);
-    if (this.totalItems) {
-        this.totalPages = Math.ceil(this.totalItems / ItemsPerPage);
-        this.pages = Array.from({length: this.totalPages}, (_, i) => i+1);
-      }
+  getPagesCount(){
+    this.articleListService.count_pages(this.currentCategory, this.currentPage).subscribe((pagination) => {
+      this.paginationString = '';
+      this.paginationString = pagination;
+    });
   }
-    
+
   refresh(): void {
-    this.categoryFromRoute = CurrentCategory.current;
     window.location.reload();
   }
 }

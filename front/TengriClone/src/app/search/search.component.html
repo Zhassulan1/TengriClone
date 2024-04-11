@@ -10,16 +10,17 @@
     <div class="article-detail">
       <h3>
         <a [title]="article.title" href="{{ article.articleURL }}">
-            <!-- href="{{ article.articleURL }}" -->
-            <!-- [routerLink]="[article.TengriID] -->
-            <!-- {{ article }} -->
             {{ article.title }}
         </a>
       </h3>
 
       <span>{{ article.announce }}</span>
     </div>
-</div>
-
+  </div>
+  
+  <app-pagination
+  [currentCategory]="['search/' + searchValue]"
+  [currentPage]="currentPage"
+  ></app-pagination>
 
 </div>

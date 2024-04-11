@@ -1,0 +1,29 @@
+
+li {
+    margin: 0 10px
+}
+
+li a {
+    color: #000
+}
+
+li:first-child {
+    margin: 0 20px 0 0
+}
+
+li:last-child {
+    margin: 0 0 0 20px
+}
+
+.page-item.active {
+    color: #03ab02
+}
+
+
+.page-item a {
+    color: rgba(41,45,57,.5)
+}
+
+.page-item.active {
+    font-family: Inter SemiBold
+}

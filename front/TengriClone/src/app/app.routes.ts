@@ -8,6 +8,6 @@ export const routes: Routes = [
     { path: ':categoryName', component: ArticleListComponent },
     { path: 'search/:query', component: SearchComponent },
     { path: ':categoryName/:TengriID', component: ArticleDetailsComponent },
-    // { path: ':categoryName/page/:pageNumber', component: ArticleListComponent },
+    { path: ':categoryName/page/:page', component: ArticleListComponent}
     // {path: '**', redirectTo: 'News'},
 ];
