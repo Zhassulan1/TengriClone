@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ArticleListService {
-  BASE_URL = 'http://127.0.0.1:8000/api';
+  BASE_URL = 'http://51.20.144.47:8000/api';
   constructor(private client: HttpClient) { }
 
   getArticleslist(category: string, page: number=1): Observable<Article[]> {
