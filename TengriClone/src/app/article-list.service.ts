@@ -11,7 +11,7 @@ export class ArticleListService {
   constructor(private client: HttpClient) { }
 
   getArticleslist(category: string, page: number=1): Observable<Article[]> {
-    if (page === 0) {
+    if (page == 0) {
       page = 1;
     }
     return this.client.get<Article[]>(`${this.BASE_URL}/category/${category}/page/${page}`);
@@ -30,7 +30,7 @@ export class ArticleListService {
   }
 
   count_pages(category: string, page: string): Observable<string> {
-    if (page === '0') {
+    if (page == '0') {
       page = '1';
     }
     return this.client.get<string>(

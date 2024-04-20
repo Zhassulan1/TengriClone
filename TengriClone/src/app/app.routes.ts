@@ -4,10 +4,10 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
 import { SearchComponent } from './search/search.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'feed/News', pathMatch: 'full' },
-    { path: 'feed/:categoryName', component: ArticleListComponent },
-    { path: 'feed/search/:query', component: SearchComponent },
-    { path: 'feed/:categoryName/:TengriID', component: ArticleDetailsComponent },
-    { path: 'feed/:categoryName/page/:page', component: ArticleListComponent},
-    {path: '**', redirectTo: 'feed/News'},
+    { path: '', redirectTo: 'News', pathMatch: 'full' },
+    { path: ':categoryName', component: ArticleListComponent },
+    { path: 'search/:query', component: SearchComponent },
+    { path: ':categoryName/:TengriID', component: ArticleDetailsComponent },
+    { path: ':categoryName/page/:page', component: ArticleListComponent},
+    {path: '**', redirectTo: 'News'},
 ];
