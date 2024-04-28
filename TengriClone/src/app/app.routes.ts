@@ -9,5 +9,5 @@ export const routes: Routes = [
     { path: 'feed/search/:query', component: SearchComponent },
     { path: 'feed/:categoryName/:TengriID', component: ArticleDetailsComponent },
     { path: 'feed/:categoryName/page/:page', component: ArticleListComponent},
-    {path: '**', redirectTo: 'feed/News'},
+    // {path: '**', redirectTo: 'feed/News'},
 ];
